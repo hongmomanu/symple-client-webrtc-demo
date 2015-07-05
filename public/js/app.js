@@ -250,4 +250,12 @@ function SympleChat($scope) {
             return 'list-group-item-warning';
         return '';
     }
+
+    //autoconnect init
+   /* if(autoconnect){
+        alert(autoconnect.getUrlParam("name"));
+
+    }*/
+
+
 }

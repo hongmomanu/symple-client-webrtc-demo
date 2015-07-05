@@ -46,6 +46,9 @@ if (app.get('env') === 'production') {
 app.get('/', function(req, res){
     res.render('indexnew', {locals: {page_id: 'home'}});
 });
+app.get('/old', function(req, res){
+    res.render('index', {locals: {page_id: 'home'}});
+});
 
 /*
 // serve index and view partials
