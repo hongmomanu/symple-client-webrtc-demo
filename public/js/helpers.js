@@ -36,7 +36,8 @@ function createPlayer($scope, origin, selector) {
 }
 
 function getHandleFromURL() {
-    return location.search.split('handle=')[1] ? location.search.split('handle=')[1] : '';
+    //return location.search.split('handle=')[1] ? location.search.split('handle=')[1] : '';
+    return autoconnect.getUrlParam("handle");
 }
 
 function assertGetUserMedia() {
