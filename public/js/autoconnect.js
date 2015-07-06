@@ -13,31 +13,60 @@ var autoconnect={
             }
         }
         return theRequest[key];
-    }
+    },
+    hideloading:function(){
+        var e = $('#loading-call-modal');
+
+        e.modal('hide');
+    },
+    rejectconnect:function(user){
+
+        console.log("11111111");
+        console.log(user);
+
+        var url=CLIENT_OPTIONS.url;
+        url=url.replace(/(:\d+)/g,":3001");
+        url=url.replace("http","ws");
+        var socket = new WebSocket(url);
 
 
-}
+        socket.onopen = function() {
+            socket.send(JSON.stringify({
+                type:"videoreject",
+                userid:user
+            }));
+        };
 
-$(document).ready(function() {
 
-    setTimeout(init,3000);
-    var handler=autoconnect.getUrlParam("handler");
-    var from=autoconnect.getUrlParam("from");
+        /*var app=parent.Globle_Variable.app;
+        var mainController=app.getController('Main');
+        mainController.*/
+       /* var btn=autoconnect.parentobject.Ext.Viewport.down('#closechatwin');
+        btn._handler();*/
 
-    function init(){
-        console.log(33333333333);
+
+
+    },
+
+    showconnectingdialog:function(touser){
+
+        var e = $('#loading-call-modal');
+        e.find('.caller').text('@' + touser);
+
+        e.modal('show');
+    },
+    makeconnect:function(touser){
 
         var elemets=angular.element('b[class=ng-binding]');
 
-        console.log(elemets.length);
+        //console.log(elemets.length);
 
         if(elemets.length>=2){
             for(var i=0;i<elemets.length;i++){
-                console.log($(elemets[i]).html());
-                console.log("@"+from);
 
-                if($(elemets[i]).html()==("@"+from)){
-                    angular.element('.videochat'+from).triggerHandler('click');
+
+                if($(elemets[i]).html()==("@"+touser)){
+                    angular.element('.videochat'+touser).triggerHandler('click');
                 }
 
             }
@@ -45,16 +74,22 @@ $(document).ready(function() {
 
         }
 
-
-        console.log(2222222222222);
-
     }
-    //console.log(getHandleFromURL());
 
-    //angular.element('.videochatxim').triggerHandler('click');
-    //alert(autoconnect.getUrlParam("name"));
-    //$('input')[0].value=autoconnect.getUrlParam("name");
-    //$('form')[0].value=autoconnect.getUrlParam("name");
+
+}
+
+
+$(document).ready(function() {
+
+    //setTimeout(init,3000);
+    var touser=autoconnect.getUrlParam("touser");
+    //var from=autoconnect.getUrlParam("from");
+
+    if(touser){
+        autoconnect.showconnectingdialog(touser);
+    }
+
 
 
 });

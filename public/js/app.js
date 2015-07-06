@@ -57,7 +57,8 @@ function SympleChat($scope) {
             
                 if (!c.status) {
                     // Show a dialog to the user asking if they want to accept the call
-                    var e = $('#incoming-call-modal')
+                    var e = $('#incoming-call-modal');
+                    var username=c.from.user;
                     e.find('.caller').text('@' + c.from.user)
                     e.find('.accept').unbind('click').click(function() {
                         c.status = 200;
@@ -69,9 +70,12 @@ function SympleChat($scope) {
                     e.find('.reject').unbind('click').click(function() {
                         c.status = 500;
                         $scope.client.respond(c);
-                        e.modal('hide')  
+                        
+                        autoconnect.rejectconnect(username);
+                        e.modal('hide') ;
+
                     })
-                    e.modal('show')   
+                    e.modal('show');
                 }    
                 else if (c.status == 200) {      
                     // Handle call accepted     

@@ -139,16 +139,32 @@
                   <p>You have an incoming video call from <span class="caller"></span></p>
                   <div class="btn-group btn-group-justified">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-success accept">Accept</button>
+                      <button type="button" class="btn btn-success accept">接受</button>
                     </div>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-danger reject">Reject</button>
+                      <button type="button" class="btn btn-danger reject">拒绝</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="modal fade" id="loading-call-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">联系中...</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>正在等待<span class="caller"></span>回应... </p>
+
+                          </div>
+                        </div>
+                      </div>
+            </div>
+
+
         </div>              
         
         <div id="messages" style="display:none;">
