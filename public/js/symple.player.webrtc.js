@@ -92,7 +92,9 @@ Symple.Player.Engine.WebRTC = Symple.Player.Engine.extend({
         if (params && params.localMedia) {
           
             // Get the local stream, show it in the local video element and send it
-            var self = this;  
+            console.log("audio");
+            console.log(!params.disableAudio);
+            var self = this;
             navigator.getUserMedia({ audio: !params.disableAudio, video: !params.disableVideo }, 
             
                 // successCallback

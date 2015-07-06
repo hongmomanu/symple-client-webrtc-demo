@@ -20,18 +20,22 @@ var autoconnect={
 
 $(document).ready(function() {
 
-    setTimeout(init,500);
-    var handler=getHandleFromURL();
-    var from=autoconnect.getUrlParam("from")
+    setTimeout(init,3000);
+    var handler=autoconnect.getUrlParam("handler");
+    var from=autoconnect.getUrlParam("from");
+
     function init(){
-        //console.log(1111111111111);
+        console.log(33333333333);
 
         var elemets=angular.element('b[class=ng-binding]');
 
-        //console.log(elemets.length);
+        console.log(elemets.length);
 
         if(elemets.length>=2){
             for(var i=0;i<elemets.length;i++){
+                console.log($(elemets[i]).html());
+                console.log("@"+from);
+
                 if($(elemets[i]).html()==("@"+from)){
                     angular.element('.videochat'+from).triggerHandler('click');
                 }

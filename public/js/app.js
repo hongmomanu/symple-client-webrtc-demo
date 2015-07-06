@@ -13,6 +13,7 @@ function SympleChat($scope) {
     $scope.messageText = ""; 
     $scope.errorText = ""; 
     $scope.isLoading = false;
+    testobj=$scope;
 
     $(document).ready(function() {            
         
@@ -230,7 +231,7 @@ function SympleChat($scope) {
         
             // Init local video player
             $scope.localPlayer = createPlayer($scope, 'caller', '#video .local-video');
-            $scope.localPlayer.play({ localMedia: true, disableAudio: true });
+            $scope.localPlayer.play({ localMedia: true, disableAudio: false });
             
             // TODO: Set false on session end or Symple error
             $scope.localVideoPlaying = true;
